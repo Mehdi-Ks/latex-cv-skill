@@ -20,7 +20,7 @@ The output is a single A4 page with:
 
 ## ATS Compatibility
 
-Tested against 6 major ATS platforms (Workday, Taleo, SuccessFactors, iCIMS, Greenhouse, Lever):
+Tested using **[ats-screener.vercel.app](https://ats-screener.vercel.app/scanner)** against 6 major ATS platforms (Workday, Taleo, SuccessFactors, iCIMS, Greenhouse, Lever):
 
 | Metric | Score |
 |---|---|
