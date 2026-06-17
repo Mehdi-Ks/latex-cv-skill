@@ -101,12 +101,19 @@ The `\jobheader` and `\recogentry` commands each accept a URL argument. When pro
 ```
 latex-cv-skill/
 ├── README.md
-├── latex-cv.skill          ← Install this in Claude Cowork
-└── skill/                  ← Skill source (human-readable)
-    ├── SKILL.md            ← Skill instructions for Claude
-    └── references/
-        ├── base_template.tex   ← Full LaTeX preamble + template
-        └── overleaf_guide.md   ← Overleaf setup tutorial
+├── LICENSE
+├── latex-cv.skill              ← Install this in Claude Cowork
+├── skill/                      ← Skill source (human-readable)
+│   ├── SKILL.md                ← Skill instructions for Claude
+│   └── references/
+│       ├── base_template.tex   ← Full LaTeX preamble + template
+│       └── overleaf_guide.md   ← Overleaf setup tutorial
+├── example/                    ← Demo CV (Mehdi Ksibi, phone redacted)
+│   ├── main_demo.tex
+│   ├── logo_*.png              ← Company logos
+│   └── OVERLEAF_SETUP.md
+└── preview/                    ← Screenshots
+    └── cv_preview.png
 ```
 
 The `.skill` file is a zip of the `skill/` directory. You can inspect or modify the source files and repackage using the [Claude skill-creator](https://github.com/anthropics/claude-code) tooling.
