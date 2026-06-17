@@ -8,7 +8,9 @@ Upload your CV. Say *"build me a LaTeX CV"*. Get a polished zip containing `main
 
 ## Preview
 
-> *(Replace this section with a screenshot of the compiled PDF)*
+![CV Preview — header and skills](preview/cv_preview_1.png)
+![CV Preview — work experience](preview/cv_preview_2.png)
+![CV Preview — education and leadership](preview/cv_preview_3.png)
 
 The output is a single A4 page with:
 - Centered serif name + green accent rule
@@ -113,7 +115,9 @@ latex-cv-skill/
 │   ├── logo_*.png              ← Company logos
 │   └── OVERLEAF_SETUP.md
 └── preview/                    ← Screenshots
-    └── cv_preview.png
+    ├── cv_preview_1.png
+    ├── cv_preview_2.png
+    └── cv_preview_3.png
 ```
 
 The `.skill` file is a zip of the `skill/` directory. You can inspect or modify the source files and repackage using the [Claude skill-creator](https://github.com/anthropics/claude-code) tooling.
