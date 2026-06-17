@@ -1,8 +1,13 @@
 # latex-cv — Claude Skill
 
-A [Claude Cowork](https://claude.ai) skill that turns any uploaded CV into a **single-page, ATS-compatible LaTeX CV**, packaged as a ready-to-compile Overleaf zip.
+ATS optimisation has a side effect nobody talks about: every CV starts looking identical. Strip formatting, match keywords, use plain section names — and the document that passes the scanner is indistinguishable from the 46 others the recruiter reads that day.
 
-Upload your CV. Say *"build me a LaTeX CV"*. Get a polished zip containing `main.tex`, company logos, and a step-by-step Overleaf setup guide — in one shot.
+This skill takes a different approach. It generates a **single-page LaTeX CV that passes ATS scanners without sacrificing the visual identity that makes a human want to keep reading** — packaged as a ready-to-compile Overleaf zip.
+
+The key features:
+- **Clickable company logos** next to each job entry, linking to the company website — gives the document visual rhythm, helps recruiters recognise companies at a glance, and disambiguates similar names across industries
+- **100/100 section structure score** — achieved by fixing a silent LaTeX bug that causes most LaTeX CVs to score 0 on ATS section detection (see [ATS Compatibility](#ats-compatibility))
+- **One-shot generation** — upload your CV, say *"build me a LaTeX CV"*, get a zip with `main.tex`, logos, and an Overleaf setup guide
 
 ---
 
