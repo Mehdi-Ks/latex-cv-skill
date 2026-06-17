@@ -1,0 +1,359 @@
+% ============================================================
+%  Mehdi Ksibi — CV  (demo — for GitHub showcase)
+%  Compiler: XeLaTeX  (Overleaf: Menu → Compiler → XeLaTeX)
+%  Upload all logo_*.png files alongside this file in Overleaf
+% ============================================================
+
+\documentclass[10pt, a4paper]{article}
+
+% ── Page geometry ──────────────────────────────────────────
+\usepackage[top=5mm, bottom=4mm, left=16mm, right=10mm]{geometry}
+
+% ── Colours ────────────────────────────────────────────────
+\usepackage{xcolor}
+\definecolor{accent}{HTML}{0F6E56}
+\definecolor{accentlt}{HTML}{1D9E75}
+\definecolor{graytext}{HTML}{444444}
+\definecolor{graydim}{HTML}{888888}
+\definecolor{ruleclr}{HTML}{E0E0E0}
+
+% ── Fonts ──────────────────────────────────────────────────
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Heros}
+\newfontfamily\namefont{TeX Gyre Pagella}
+
+% ── Graphics ───────────────────────────────────────────────
+\usepackage{graphicx}
+
+% ── Green left spine ───────────────────────────────────────
+\usepackage{eso-pic}
+\usepackage{tikz}
+\AddToShipoutPictureBG{%
+  \begin{tikzpicture}[overlay, remember picture]
+    \fill[accent]
+      (current page.north west)
+      rectangle
+      ([xshift=4pt]current page.south west);
+  \end{tikzpicture}%
+}
+
+% ── Hyperlinks ─────────────────────────────────────────────
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, urlcolor=accent, linkcolor=accent}
+
+% ── Lists ──────────────────────────────────────────────────
+\usepackage{enumitem}
+\setlist[itemize]{
+  leftmargin  = 10pt,
+  itemsep     = 0pt,
+  parsep      = 0pt,
+  topsep      = 0pt,
+  label       = {\textcolor{accentlt}{\rule{4pt}{1.2pt}}}
+}
+
+% ── Spacing ────────────────────────────────────────────────
+\usepackage{parskip}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\pagestyle{empty}
+
+% ── Letter spacing helper ──────────────────────────────────
+\newcommand{\tracked}[2][15]{{\addfontfeatures{LetterSpace=#1}#2}}
+
+% ── Section title ──────────────────────────────────────────
+\newcommand{\cvsection}[1]{%
+  \vspace{0pt}%
+  {\fontsize{9}{10}\selectfont\bfseries
+    \textcolor{accent}{\MakeUppercase{#1}}}\\[-2pt]%
+  \textcolor{accent}{\rule{24pt}{1.5pt}}%
+  \vspace{2pt}%
+}
+
+% ── Skill category label ───────────────────────────────────
+\newcommand{\sklabel}[1]{%
+  {\fontsize{8.5}{9}\selectfont\bfseries\textcolor{accentlt}%
+    {\MakeUppercase{#1}}}%
+}
+
+% ── Job header: logo | title / company | date | url | logoht ─
+% #1=logo  #2=title  #3=company  #4=date  #5=url  #6=logo height
+\newcommand{\jobheader}[6]{%
+  \vspace{3pt}%
+  \def\joburlarg{#5}%
+  \noindent
+  \begin{minipage}[t]{0.055\textwidth}
+    \vspace{0pt}
+    \ifx\joburlarg\empty
+      \includegraphics[width=\linewidth, height=#6,
+                       keepaspectratio]{#1}%
+    \else
+      \href{#5}{\includegraphics[width=\linewidth, height=#6,
+                       keepaspectratio]{#1}}%
+    \fi
+  \end{minipage}%
+  \hspace{4pt}%
+  \begin{minipage}[t]{0.73\textwidth}
+    \vspace{0pt}
+    {\fontsize{10}{11}\selectfont\textbf{#2}}\\[-3pt]
+    {\fontsize{8.5}{9}\selectfont
+      \ifx\joburlarg\empty
+        \textcolor{accent}{#3}%
+      \else
+        \href{#5}{\textcolor{accent}{#3}}%
+      \fi
+    }
+  \end{minipage}%
+  \hfill
+  \begin{minipage}[t]{0.175\textwidth}
+    \vspace{1pt}
+    \raggedleft
+    {\fontsize{8.5}{9}\selectfont\textcolor{graydim}{#4}}
+  \end{minipage}%
+  \vspace{0pt}%
+}
+
+% ── Recognition entry: logo | title · org · date | url ─────
+% #1=logo  #2=title  #3=org+date  #4=url (empty = no link)
+\newcommand{\recogentry}[4]{%
+  \vspace{1pt}%
+  \def\recourlarg{#4}%
+  \noindent
+  \begin{minipage}[t]{0.045\textwidth}
+    \vspace{1pt}
+    \ifx\recourlarg\empty
+      \includegraphics[width=\linewidth, height=0.38cm,
+                       keepaspectratio]{#1}%
+    \else
+      \href{#4}{\includegraphics[width=\linewidth, height=0.38cm,
+                       keepaspectratio]{#1}}%
+    \fi
+  \end{minipage}%
+  \hspace{4pt}%
+  \begin{minipage}[t]{0.91\textwidth}
+    \vspace{0pt}
+    {\fontsize{9.5}{11}\selectfont
+      \ifx\recourlarg\empty
+        \textbf{#2}\enspace\textcolor{accent}{#3}%
+      \else
+        \href{#4}{\textbf{#2}}\enspace\textcolor{accent}{#3}%
+      \fi
+    }
+  \end{minipage}%
+}
+
+% ============================================================
+\begin{document}
+% ============================================================
+
+% ── HEADER ──────────────────────────────────────────────────
+\begin{center}
+{\namefont\fontsize{25}{27}\selectfont Mehdi Ksibi}\\[3pt]
+\textcolor{accent}{\rule{0.24\textwidth}{0.8pt}}\\[3pt]
+{\fontsize{8}{8.5}\selectfont\textcolor{accent}%
+  {SYSTEMS \& DATAOPS ENGINEER · END-TO-END DATA INFRASTRUCTURE · AI-ACCELERATED DECISION SUPPORT}}\\[3pt]
+{\fontsize{9}{10}\selectfont\textcolor{graytext}{%
+  Tunis, Tunisia
+  \enspace·\enspace +216 XX XXX XXX
+  \enspace·\enspace \href{mailto:mehdi.ksibi@gmail.com}{mehdi.ksibi@gmail.com}
+  \enspace·\enspace \href{https://linkedin.com/in/mehdi-ksibi}{linkedin.com/in/mehdi-ksibi}}}
+\end{center}
+\vspace{0pt}
+{\color{ruleclr}\hrule}
+\vspace{2pt}
+
+% ── SUMMARY ─────────────────────────────────────────────────
+\cvsection{Summary}
+{\fontsize{9}{11.5}\selectfont
+Systems and DataOps engineer with an M.Eng in Aeronautical Engineering
+and hands-on experience building end-to-end data workflows in operational
+environments --- from embedded sensing and cloud pipelines to analytics,
+dashboards, and decision-ready reporting. Comfortable across data
+infrastructure, applied AI, embedded systems, energy engineering, and
+aerospace. Focused on systems that run reliably and outputs that support
+real decisions.}
+
+\vspace{1pt}
+
+% ── SKILLS ───────────────────────────────────────────────────
+\cvsection{Skills}
+
+\sklabel{Data \& Analytics}\\
+{\fontsize{9}{11}\selectfont
+Python, Polars, Pandas, NumPy, Scikit-learn, SQL, PostgreSQL,
+Machine Learning, ETL / Pipeline Design, DataOps, Data Quality,
+Reporting Automation, Time-Series / Telemetry Processing, Streamlit,
+AI Workflow Design, Data Modeling}
+
+\vspace{1pt}
+\sklabel{Systems \& Cloud}\\
+{\fontsize{9}{11}\selectfont
+React, TypeScript, MQTT, Node-RED, InfluxDB, Supabase, Grafana, AWS,
+Azure Graph API, Mapbox GL API, Arduino, Sensor Integration,
+IoT Architecture, Real-time Data Streams, Dashboard Deployment,
+Energy Management Systems}
+
+\vspace{1pt}
+\sklabel{Engineering}\\
+{\fontsize{9}{11}\selectfont
+MATLAB/Simulink, ANSYS/CFD, PV Elite, ASME/ISO Standards,
+PV Sizing, CATIA V5, Abaqus/FEM, UML}
+
+\vspace{1pt}
+\sklabel{Languages}\\
+{\fontsize{9}{11}\selectfont
+Arabic C2 (Native) · French C1 (Advanced) ·
+English C1/C2 --- IELTS 8.0, TOEIC 960/990}
+
+\vspace{1pt}
+
+% ── WORK EXPERIENCE ──────────────────────────────────────────
+\cvsection{Work Experience}
+
+\vspace{-3pt}
+\jobheader{logo_kumulus.png}%
+  {AI \& DataOps Engineer (Lead)}%
+  {Kumulus Water · Tunis, Tunisia · Hybrid}%
+  {Mar 2025 – Present}%
+  {https://www.kumuluswater.com/}%
+  {0.50cm}
+{\fontsize{9}{11}\selectfont
+\begin{itemize}
+  \item Architected end-to-end IoT data infrastructure ingesting real-time
+        telemetry from \textasciitilde200 AWGs across 4 countries;
+        became the core diagnostic and referral point for all internal
+        teams and field clients.
+  \item Delivered an operational dashboard (React, TypeScript, Mapbox GL)
+        with 4-tier RBAC and a bifurcated data layer achieving sub-second
+        load times across multi-year datasets.
+  \item Engineered auto-generating ESG report module producing client-ready
+        PDFs; built AI-driven lead prospecting engine cutting research from
+        \textasciitilde20 min/lead to \textasciitilde15 sec/batch (80$\times$ faster).
+  \item Led company-wide AI \& Automation Mission --- audited all 11 BUs,
+        surfaced \textasciitilde255h/week of recoverable operational friction,
+        launched 8 AI pilots, and upskilled 14 staff via LLM workshops
+        and a 20-slide onboarding guide.
+\end{itemize}}
+
+\jobheader{logo_kumulus.png}%
+  {Data Engineer}%
+  {Kumulus Water · Tunis, Tunisia · Hybrid}%
+  {Aug 2024 – Feb 2025}%
+  {https://www.kumuluswater.com/}%
+  {0.50cm}
+{\fontsize{9}{11}\selectfont
+\begin{itemize}
+  \item Engineered the company's first AWG log processing pipeline across
+        2 machine types, cutting run-time to under 10 min on 5M+ row
+        files and replacing ad-hoc Excel checks with structured operational
+        metrics delivered to internal teams and R\&D for the first time.
+  \item Owned full integration cycle for 3 new IoT device types ---
+        authored MVP firmware in C, validated data contracts end-to-end,
+        and produced documentation adopted by the embedded hardware team.
+\end{itemize}}
+
+\jobheader{logo_kumulus.png}%
+  {Renewable Energy Engineer Intern}%
+  {Kumulus Water · Tunis, Tunisia}%
+  {Feb 2024 – Jul 2024}%
+  {https://www.kumuluswater.com/}%
+  {0.50cm}
+{\fontsize{9}{11}\selectfont
+\begin{itemize}
+  \item Cut AWG energy consumption by up to 45\% and increased water
+        production by 15\% via solar PV optimisation; built ML models for
+        energy and output forecasting; deployed a multi-site predictive
+        dashboard for demand-driven production scheduling.
+\end{itemize}}
+
+\jobheader{logo_rock.png}%
+  {Mechanical Piping Engineer Intern}%
+  {Rock International · Muscat, Oman}%
+  {Jun – Jul 2023}%
+  {https://www.rockoman.om/}%
+  {0.65cm}
+{\fontsize{9}{11}\selectfont
+\begin{itemize}
+  \item Won IAESTE placement as a top-10 international finalist;
+        executed ASME/ISO-compliant pressure-vessel stress calculations;
+        built a centralised engineering documentation platform that
+        cut retrieval time for the project team.
+\end{itemize}}
+
+\jobheader{logo_nouvelair.png}%
+  {Aeronautical Engineering Intern}%
+  {NouvelAir · Monastir, Tunisia}%
+  {Jul – Aug 2022}%
+  {https://corporate.nouvelair.com/fr}%
+  {0.65cm}
+{\fontsize{9}{11}\selectfont
+\begin{itemize}
+  \item Developed maintenance plans and NDT inspection schedules for
+        CFM56-5B engines; digitised A320 maintenance records spanning
+        A--D inspection cycles.
+\end{itemize}}
+
+\jobheader{logo_tunisair.png}%
+  {Aircraft Maintenance Intern}%
+  {Tunisair Technics · Tunis, Tunisia}%
+  {Dec 2021}%
+  {https://www.linkedin.com/company/tunisair-technics/}%
+  {0.50cm}
+{\fontsize{9}{11}\selectfont
+\begin{itemize}
+  \item Applied AMM/CMM methodology to live A320 structural damage
+        assessments under senior engineer supervision.
+\end{itemize}}
+
+\vspace{1pt}
+
+% ── EDUCATION ────────────────────────────────────────────────
+\cvsection{Education}
+
+\noindent
+\begin{minipage}[t]{0.055\textwidth}
+  \vspace{0pt}
+  \href{https://esat.ens.tn/}{\includegraphics[width=\linewidth, height=0.65cm,
+                   keepaspectratio]{logo_esat.png}}
+\end{minipage}%
+\hspace{4pt}%
+\begin{minipage}[t]{0.73\textwidth}
+  \vspace{0pt}
+  {\fontsize{10}{11}\selectfont\textbf{%
+    \href{https://esat.ens.tn/}{ESAT --- University College of Aeronautics \& Technologies, Tunis}}}\\[-3pt]
+  {\fontsize{9}{9.5}\selectfont\textcolor{graytext}{%
+    M.Eng, Aeronautical Engineering}}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.175\textwidth}
+  \vspace{1pt}
+  \raggedleft
+  {\fontsize{8.5}{9}\selectfont\textcolor{graydim}{2019 – 2024}}
+\end{minipage}
+
+\vspace{1pt}
+
+% ── LEADERSHIP & RECOGNITION ─────────────────────────────────
+\cvsection{Leadership \& Recognition}
+
+\recogentry{logo_statedept.png}%
+  {U.S. State Department MEPI Fellow}%
+  {· Georgetown University · 2021}%
+  {https://mepi.state.gov}
+
+\recogentry{logo_enactus.png}%
+  {President \& Alumni --- Enactus ESAT}%
+  {· 2019--2023}%
+  {https://enactus.org}
+
+\recogentry{logo_aiesec.png}%
+  {Program Manager \& Alumni --- AIESEC Tacapes}%
+  {· 2017--2019}%
+  {https://aiesec.org}
+
+\recogentry{logo_rotaract.png}%
+  {Co-Founder \& Alumni --- Rotaract Club of Gab\`es}%
+  {· 2018--2019}%
+  {https://www.rotaract.org/}
+
+% ============================================================
+\end{document}

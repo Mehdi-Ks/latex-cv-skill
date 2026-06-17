@@ -1,0 +1,287 @@
+% ============================================================
+%  LaTeX CV — Base Template
+%  Compiler: XeLaTeX  (Overleaf: Menu → Compiler → XeLaTeX)
+%  Fill every section marked  % <<< FILL: ... >>>
+%  Upload all logo_*.png files alongside main.tex in Overleaf
+% ============================================================
+
+\documentclass[10pt, a4paper]{article}
+
+% ── Page geometry ──────────────────────────────────────────
+\usepackage[top=5mm, bottom=4mm, left=16mm, right=10mm]{geometry}
+
+% ── Colours ────────────────────────────────────────────────
+\usepackage{xcolor}
+\definecolor{accent}{HTML}{0F6E56}
+\definecolor{accentlt}{HTML}{1D9E75}
+\definecolor{graytext}{HTML}{444444}
+\definecolor{graydim}{HTML}{888888}
+\definecolor{ruleclr}{HTML}{E0E0E0}
+
+% ── Fonts ──────────────────────────────────────────────────
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Heros}
+\newfontfamily\namefont{TeX Gyre Pagella}
+
+% ── Graphics ───────────────────────────────────────────────
+\usepackage{graphicx}
+
+% ── Green left spine ───────────────────────────────────────
+\usepackage{eso-pic}
+\usepackage{tikz}
+\AddToShipoutPictureBG{%
+  \begin{tikzpicture}[overlay, remember picture]
+    \fill[accent]
+      (current page.north west)
+      rectangle
+      ([xshift=4pt]current page.south west);
+  \end{tikzpicture}%
+}
+
+% ── Hyperlinks ─────────────────────────────────────────────
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, urlcolor=accent, linkcolor=accent}
+
+% ── Lists ──────────────────────────────────────────────────
+\usepackage{enumitem}
+\setlist[itemize]{
+  leftmargin  = 10pt,
+  itemsep     = 0pt,
+  parsep      = 0pt,
+  topsep      = 0pt,
+  label       = {\textcolor{accentlt}{\rule{4pt}{1.2pt}}}
+}
+
+% ── Spacing ────────────────────────────────────────────────
+\usepackage{parskip}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\pagestyle{empty}
+
+% ── Letter spacing helper (DO NOT use on section headers) ──
+\newcommand{\tracked}[2][15]{{\addfontfeatures{LetterSpace=#1}#2}}
+
+% ── Section title — NO \tracked, plain \MakeUppercase only ─
+%    (ATS-critical: \tracked causes "S U M M A R Y" in text stream)
+\newcommand{\cvsection}[1]{%
+  \vspace{0pt}%
+  {\fontsize{9}{10}\selectfont\bfseries
+    \textcolor{accent}{\MakeUppercase{#1}}}\\[-2pt]%
+  \textcolor{accent}{\rule{24pt}{1.5pt}}%
+  \vspace{2pt}%
+}
+
+% ── Skill category label — NO \tracked ─────────────────────
+\newcommand{\sklabel}[1]{%
+  {\fontsize{8.5}{9}\selectfont\bfseries\textcolor{accentlt}%
+    {\MakeUppercase{#1}}}%
+}
+
+% ── Job header ─────────────────────────────────────────────
+% Args: #1=logo file  #2=job title  #3=company+location
+%       #4=date range  #5=company URL (or {} for none)
+%       #6=logo height (e.g. 0.50cm or 0.65cm)
+\newcommand{\jobheader}[6]{%
+  \vspace{3pt}%
+  \def\joburlarg{#5}%
+  \noindent
+  \begin{minipage}[t]{0.055\textwidth}
+    \vspace{0pt}
+    \ifx\joburlarg\empty
+      \includegraphics[width=\linewidth, height=#6,
+                       keepaspectratio]{#1}%
+    \else
+      \href{#5}{\includegraphics[width=\linewidth, height=#6,
+                       keepaspectratio]{#1}}%
+    \fi
+  \end{minipage}%
+  \hspace{4pt}%
+  \begin{minipage}[t]{0.73\textwidth}
+    \vspace{0pt}
+    {\fontsize{10}{11}\selectfont\textbf{#2}}\\[-3pt]
+    {\fontsize{8.5}{9}\selectfont
+      \ifx\joburlarg\empty
+        \textcolor{accent}{#3}%
+      \else
+        \href{#5}{\textcolor{accent}{#3}}%
+      \fi
+    }
+  \end{minipage}%
+  \hfill
+  \begin{minipage}[t]{0.175\textwidth}
+    \vspace{1pt}
+    \raggedleft
+    {\fontsize{8.5}{9}\selectfont\textcolor{graydim}{#4}}
+  \end{minipage}%
+  \vspace{0pt}%
+}
+
+% ── Recognition / leadership entry ─────────────────────────
+% Args: #1=logo file  #2=title  #3=org + date string
+%       #4=URL (or {} for none)
+\newcommand{\recogentry}[4]{%
+  \vspace{1pt}%
+  \def\recourlarg{#4}%
+  \noindent
+  \begin{minipage}[t]{0.045\textwidth}
+    \vspace{1pt}
+    \ifx\recourlarg\empty
+      \includegraphics[width=\linewidth, height=0.38cm,
+                       keepaspectratio]{#1}%
+    \else
+      \href{#4}{\includegraphics[width=\linewidth, height=0.38cm,
+                       keepaspectratio]{#1}}%
+    \fi
+  \end{minipage}%
+  \hspace{4pt}%
+  \begin{minipage}[t]{0.91\textwidth}
+    \vspace{0pt}
+    {\fontsize{9.5}{11}\selectfont
+      \ifx\recourlarg\empty
+        \textbf{#2}\enspace\textcolor{accent}{#3}%
+      \else
+        \href{#4}{\textbf{#2}}\enspace\textcolor{accent}{#3}%
+      \fi
+    }
+  \end{minipage}%
+}
+
+% ============================================================
+\begin{document}
+% ============================================================
+
+% ── HEADER ──────────────────────────────────────────────────
+\begin{center}
+% <<< FILL: Replace with person's name (keep \namefont and font size) >>>
+{\namefont\fontsize{25}{27}\selectfont FirstName LastName}\\[3pt]
+\textcolor{accent}{\rule{0.24\textwidth}{0.8pt}}\\[3pt]
+% <<< FILL: Replace tagline — ALL CAPS, parts separated by · >>>
+{\fontsize{8}{8.5}\selectfont\textcolor{accent}%
+  {ROLE TITLE · SPECIALITY ONE · SPECIALITY TWO}}\\[3pt]
+% <<< FILL: Replace contact details. Use \enspace·\enspace between items >>>
+{\fontsize{9}{10}\selectfont\textcolor{graytext}{%
+  City, Country
+  \enspace·\enspace +XX XXXXXXXXX
+  \enspace·\enspace \href{mailto:email@example.com}{email@example.com}
+  \enspace·\enspace \href{https://linkedin.com/in/handle}{linkedin.com/in/handle}}}
+\end{center}
+\vspace{0pt}
+{\color{ruleclr}\hrule}
+\vspace{2pt}
+
+% ── SUMMARY ─────────────────────────────────────────────────
+\cvsection{Summary}
+% <<< FILL: 3–4 sentence prose summary. Keep fontsize command. >>>
+{\fontsize{9}{11.5}\selectfont
+Replace this with a 3--4 sentence professional summary. Describe the
+person's background, core strengths, and what they focus on. Keep it
+factual and grounded --- no fluff. Focused on what value they bring.}
+
+\vspace{1pt}
+
+% ── SKILLS ───────────────────────────────────────────────────
+\cvsection{Skills}
+
+% <<< FILL: Adapt category names to the person. Keep \sklabel + fontsize. >>>
+% <<< Remove or add \sklabel blocks as needed. >>>
+
+\sklabel{Category One}\\
+{\fontsize{9}{11}\selectfont
+Skill A, Skill B, Skill C, Skill D, Skill E}
+
+\vspace{1pt}
+\sklabel{Category Two}\\
+{\fontsize{9}{11}\selectfont
+Skill F, Skill G, Skill H, Skill I}
+
+\vspace{1pt}
+\sklabel{Category Three}\\
+{\fontsize{9}{11}\selectfont
+Skill J, Skill K, Skill L}
+
+\vspace{1pt}
+\sklabel{Languages}\\
+{\fontsize{9}{11}\selectfont
+% <<< FILL: Language · Level pairs >>>
+Language 1 (Native) · Language 2 B2 · Language 3 C1}
+
+\vspace{1pt}
+
+% ── WORK EXPERIENCE ──────────────────────────────────────────
+\cvsection{Work Experience}
+
+% NOTE: \vspace{-3pt} before the FIRST job entry only — closes gap after section label
+\vspace{-3pt}
+% <<< FILL: One \jobheader + \begin{itemize} block per role.
+%     Args: logo file, title, company · location · mode, dates, URL, logo height
+%     Use {} for URL if unknown. Use 0.50cm for logo height (0.65cm if logo appears small). >>>
+\jobheader{logo_company1.png}%
+  {Job Title Here}%
+  {Company Name · City, Country · On-site}%
+  {Mon YYYY -- Mon YYYY}%
+  {https://www.company.com}%
+  {0.50cm}
+{\fontsize{9}{11}\selectfont
+\begin{itemize}
+  \item Action verb + what you did + quantified result.
+  \item Action verb + what you built/led/improved + impact.
+\end{itemize}}
+
+% <<< FILL: Repeat \jobheader block for each additional role >>>
+\jobheader{logo_company2.png}%
+  {Another Job Title}%
+  {Another Company · City, Country}%
+  {Mon YYYY -- Mon YYYY}%
+  {}%
+  {0.50cm}
+{\fontsize{9}{11}\selectfont
+\begin{itemize}
+  \item Action verb + what you did + quantified result.
+\end{itemize}}
+
+\vspace{1pt}
+
+% ── EDUCATION ────────────────────────────────────────────────
+\cvsection{Education}
+
+% <<< FILL: Replace institution name, degree, years, logo file, and URL >>>
+\noindent
+\begin{minipage}[t]{0.055\textwidth}
+  \vspace{0pt}
+  \href{https://www.university.edu}{\includegraphics[width=\linewidth,
+    height=0.65cm, keepaspectratio]{logo_university.png}}
+\end{minipage}%
+\hspace{4pt}%
+\begin{minipage}[t]{0.73\textwidth}
+  \vspace{0pt}
+  {\fontsize{10}{11}\selectfont\textbf{%
+    \href{https://www.university.edu}{University Name}}}\\[-3pt]
+  {\fontsize{9}{9.5}\selectfont\textcolor{graytext}{%
+    Degree Type, Field of Study}}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.175\textwidth}
+  \vspace{1pt}
+  \raggedleft
+  {\fontsize{8.5}{9}\selectfont\textcolor{graydim}{YYYY -- YYYY}}
+\end{minipage}
+
+\vspace{1pt}
+
+% ── LEADERSHIP & RECOGNITION ─────────────────────────────────
+\cvsection{Leadership \& Recognition}
+
+% <<< FILL: One \recogentry per item.
+%     Args: logo file, bold title, accent org+date string, URL >>>
+\recogentry{logo_org1.png}%
+  {Title or Award Name}%
+  {· Organisation · Year}%
+  {https://www.org.com}
+
+\recogentry{logo_org2.png}%
+  {Another Title}%
+  {· Another Org · Year--Year}%
+  {}
+
+% ============================================================
+\end{document}
