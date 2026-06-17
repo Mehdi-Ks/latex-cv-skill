@@ -139,6 +139,21 @@ Key files to edit:
 
 ---
 
+## Known limitations
+
+- **Experience Quality score** plateaus around 50/100 on ats-screener.vercel.app. This is a tool-specific ceiling caused by the graphical rule used as a bullet marker (`\rule{4pt}{1.2pt}`) not appearing in the PDF text stream, so the tool can't detect individual bullet boundaries for quantification scoring. It does not reflect a real parsing problem — the bullet content is fully readable by actual ATS systems.
+- **Non-Latin characters** — Arabic, CJK, and some accented characters are untested. XeLaTeX handles Unicode well in principle but the specific fonts used (TeX Gyre Heros, TeX Gyre Pagella) may not cover all scripts. Contributions welcome.
+- **Single-page constraint** — the template is tuned for a dense one-page CV. Longer CVs will need margin and font adjustments or a deliberate two-page layout.
+- **ATS scores are from one tool** — results from other scanners (Jobscan, Resume Worded, etc.) may differ. If you test with another tool, please share your results via an [ATS Result issue](https://github.com/Mehdi-Ks/latex-cv-skill/issues/new?template=ats_result.md).
+
+---
+
+## Contributing
+
+Found a bug, tested on a new ATS tool, or have an idea for improvement? See [CONTRIBUTING.md](./CONTRIBUTING.md) — the open questions list is a good place to start.
+
+---
+
 ## License
 
 MIT — use freely, modify, share. Attribution appreciated but not required.
